@@ -1,19 +1,20 @@
 const container = document.querySelector("#container");// reference for container
-let square = document.querySelector('#square'); //creating sqaure to be cloned
+let square = document.querySelector('#square'); //referencing sqaure to be cloned
 square.setAttribute('style', 'width: 16px; height: 16px; border-style: solid; border-color: black; padding: 0px; box-sizing: border-box; border-width: 0.2px');
 container.appendChild(square);
 
 const clearButton = document.querySelector("#clear");
 let chooseSquareSize = document.querySelector('#size');
 
+//Gets the current height and width of Grid container
 const containerHeight = container.clientHeight;
 const containerWidth = container.clientWidth;
 
 let squareArray = [];
 squareArray.push(square);
 
-/*This is what creates a grid of squares by cloning 1 square a set number of times based on the noOfSquares function.
-By pushing each sqaure into an array, we get a reference to it via its index allowing it to be interacted with using
+/*This is what creates a grid of squares by cloning 1 square a set number of times based on the fact is takes 1797 squares to fill
+a 1000x460 rectangle. By pushing each square into an array, we get a reference to it via its index allowing it to be interacted with using
 events. Hence, the use of the foreach.  ETC*/
 
 //for 16 by 16 grid
@@ -23,6 +24,10 @@ for (i = 0; i < 1797; i++) {
     squareArray.push(squareClone);
 }
 
+/*The function below does two things. 
+1. Changes the size of each individual square on the grid.
+2. Calculates the number of squares it'll take to fill the container with the new sqaure size.
+*/
 
 let noOfSquares = (size) => {
     square.style.width = size + "px";
@@ -40,16 +45,21 @@ let noOfSquares = (size) => {
 }
 
 
-
-
-
+/*when the below button is clicked, it promps the user to input a size of a new grid.
+It then checks if the size you entered is too big or small. If the size is okay, itll proceed to 
+clear the orginal 16x16 grid by clearing all the squares from the container and removing them from the array
+then it'll reappend and repush the squares based on the size you entered, creating a new grid entirely*/
 
 
 chooseSquareSize.addEventListener('click', () => {
     let sqaureSize = prompt("Enter your square Size")
-    if (sqaureSize < 9) {
+    if (sqaureSize < 5) {
         alert("Square size too small! please try again!")
     }
+    else if (sqaureSize > 99) {
+        alert("Square size too big. Please try again!")
+    }
+
     else {
         squareArray.forEach((square) => container.removeChild(square))
         squareArray = []
@@ -59,8 +69,7 @@ chooseSquareSize.addEventListener('click', () => {
             squareArray.push(squareClone);
         }
     }
-    squareArray.forEach((square) => square.addEventListener('mouseover', () => square.style.backgroundColor = 'black'))
-
+    changeOnHover();
 });
 
 
@@ -73,10 +82,13 @@ const clearBoard = () => {
     squareArray.forEach((square) => square.style.backgroundColor = "white");
 }
 
-//Event Listeners
-squareArray.forEach((square) => {
-    square.addEventListener('mouseover', () => square.style.backgroundColor = "black")
-});
+//function that changes the color of the square once you hover over it.
+const changeOnHover = () => {
+    squareArray.forEach((square) => {
+        square.addEventListener('mouseover', () => square.style.backgroundColor = "black")
+    });
+}
 
 //button to clear board
 clearButton.addEventListener('click', () => clearBoard());
+changeOnHover();
