@@ -52,6 +52,7 @@ chooseSquareSize.addEventListener('click', () => {
     }
     else {
         squareArray.forEach((square) => container.removeChild(square))
+        squareArray = []
         for (j = 0; j < noOfSquares(sqaureSize); j++) {
             let squareClone = square.cloneNode();
             container.appendChild(squareClone);
