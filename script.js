@@ -1,6 +1,6 @@
 const container = document.querySelector("#container");// reference for container
 let square = document.querySelector('#square'); //referencing sqaure to be cloned
-square.setAttribute('style', 'width: 16px; height: 16px; border-style: solid; border-color: black; padding: 0px; box-sizing: border-box; border-width: 0.2px');
+square.setAttribute('style', 'width: 16px; height: 16px; border-style: solid; border-color: black; padding: 0px; box-sizing: border-box; border-width: 0.2px; margin');
 container.appendChild(square);
 
 const clearButton = document.querySelector("#clear");
@@ -36,7 +36,8 @@ let noOfSquares = (size) => {
     let height = containerHeight / size;
     let width = containerWidth / size;
 
-    let numberOfsquares = Math.floor(width) * Math.floor(height);
+    let numberOfsquares = Math.floor(width) * Math.ceil(height);
+
 
 
 

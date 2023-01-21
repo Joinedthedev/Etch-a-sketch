@@ -15,7 +15,7 @@ html {
     flex-wrap: wrap;
     width: 1000px;
     height: 460px;
-    
+
     
 
 }
@@ -33,3 +33,13 @@ body {
     height: 100vh;
     margin: 0px;
 }
+/*
+#square{
+width: 16px; 
+height: 16px; 
+border-style: solid; 
+border-color: black; 
+padding: 0px; 
+box-sizing: border-box; 
+border-width: 0.2px;
+}*/
