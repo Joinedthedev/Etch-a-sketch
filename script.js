@@ -36,7 +36,10 @@ let noOfSquares = (size) => {
     let height = containerHeight / size;
     let width = containerWidth / size;
 
-    let numberOfsquares = Math.floor(width) * Math.ceil(height);
+    let numberOfsquares = Math.floor(width) * Math.ceil(height); 
+    /*^^^^the mixed use of floor and ceil somehow makes the number of squares always be a multiple 
+    of the width and height of the container. This allows the sqaures to perfectly fill the container
+    and gets rid of unwanted gaps between rows.*/ 
 
 
 
