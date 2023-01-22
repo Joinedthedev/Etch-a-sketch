@@ -53,12 +53,12 @@ then it'll reappend and repush the squares based on the size you entered, creati
 
 
 chooseSquareSize.addEventListener('click', () => {
-    let sqaureSize = prompt("Enter your square Size")
+    let sqaureSize = prompt("Enter your grid Size. E.g typing 16 will make a 16x16 grid. ")
     if (sqaureSize < 5) {
-        alert("Square size too small! please try again!")
+        alert("Grid size too small! Grid must be no smaller 5x5. Please try again!")
     }
-    else if (sqaureSize > 99) {
-        alert("Square size too big. Please try again!")
+    else if (sqaureSize > 100) {
+        alert("Grid size too big! Grid must be no greater than 100x100. Please try again!")
     }
 
     else {
@@ -90,6 +90,15 @@ const changeOnHover = () => {
     });
 }
 
+const changeOnhold = () => {
+    squareArray.forEach((square) => {
+        square.addEventListener('mousedown', () => square.style.backgroundColor = 'white')
+    })
+
+}
 //button to clear board
 clearButton.addEventListener('click', () => clearBoard());
 changeOnHover();
+//changeOnhold();
+
+console.table(squareArray)
